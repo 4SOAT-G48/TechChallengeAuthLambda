@@ -1,0 +1,19 @@
+{
+  "name": "auth-lambda",
+  "description": "authLambda",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "aws-jwt-verify": "^4.0.1",
+    "aws-sdk": "^2.1572.0",
+    "serverless-offline": "^11.6.0",
+    "sharp": "^0.32.6",
+    "uuid": "^9.0.1"
+  },
+  "scripts": {
+    "dev": "sls offline",
+    "deploy": "npm run predeploy && sls deploy",
+    "predeploy": "SHARP_IGNORE_GLOBAL_LIBVIPS=1 npm_config_arch=x64 npm_config_platform=linux npm install sharp"
+  }
+}
