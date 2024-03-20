@@ -6,14 +6,22 @@
   "license": "MIT",
   "dependencies": {
     "aws-jwt-verify": "^4.0.1",
+    "aws-lambda": "^1.0.7",
     "aws-sdk": "^2.1572.0",
     "serverless-offline": "^11.6.0",
     "sharp": "^0.32.6",
     "uuid": "^9.0.1"
   },
   "scripts": {
-    "dev": "sls offline",
-    "deploy": "npm run predeploy && sls deploy",
-    "predeploy": "SHARP_IGNORE_GLOBAL_LIBVIPS=1 npm_config_arch=x64 npm_config_platform=linux npm install sharp"
+    "dev": "yarn build && sls offline",
+    "deploy": "yarn build && yarn predeploy && sls deploy",
+    "predeploy": "SHARP_IGNORE_GLOBAL_LIBVIPS=1 npm_config_arch=x64 npm_config_platform=linux npm install sharp",
+    "build": "tsc -p tsconfig.json"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.136",
+    "dotenv": "^16.4.5",
+    "serverless-dotenv-plugin": "^6.0.0",
+    "typescript": "^5.4.2"
   }
 }
